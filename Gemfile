@@ -8,7 +8,7 @@ gem 'rails', '3.0.7'
 
 gem 'sqlite3'
 gem 'rmagick'
-gem 'native_bayes', 
+gem 'native_bayes'
 gem "paperclip", "~> 2.4"
 # https://github.com/thoughtbot/paperclip
 
