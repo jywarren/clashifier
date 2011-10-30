@@ -1,14 +1,35 @@
+########################
 Depends on:
+########################
 
 * RMagick
 * naive_bayes, rmagick gems, paperclip
 
+########################
 To do: 
+########################
 
 * Get Classifier controller running
 * Actually install Paperclip and get it accepting image uploads or URL image uploads
 * Get RMagick reading the saved images
 * Figure out how to generate a string representation of a pixel in 3-4 color values which can be used to train a Bayesian model
 * Start accepting a set of pixel color values {:n => 255, :r => 255, :g => 255, :b => 255, :classname => "spartina alterniflora"} to train a model
-* Figure out how to store a Bayesian model in the database -- make a Rails model to store it.
+* Decide how to store the filename of a saved Bayesian model -- wrap in a Rails model?
 * Some kind of interface? or keep this as a web service and let clients figure out interface... I'll write one for MapKnitter...
+
+Later on:
+
+* Consider normalized RGB: R/(R+G+B) to reduce lighting effects?
+* Other classification techniques: SVM, KNN, Neural network
+
+########################
+Helpful reading
+########################
+
+"Progress in pattern recognition, image analysis and applications"
+  * Luis Rueda, Domingo Mery, Josef Kittler
+  * http://books.google.com/books?id=JMQk1HJmhv0C&pg=PA813&lpg=PA813&dq=naive+bayes+color+classification+rgb&source=bl&ots=MJnQgy9Wwf&sig=Z_99zvjO-LsKBbp9v3D29dJ039o&hl=en&ei=TVitTsPmJ-Ld0QGMp-GuDw&sa=X&oi=book_result&ct=result&resnum=2&ved=0CCEQ6AEwAQ#v=onepage&q=naive%20bayes%20color%20classification%20rgb&f=false
+
+"Ways to improve Image Pixel Classification"
+  * Stack Overflow
+  * http://stackoverflow.com/questions/6613825/ways-to-improve-image-pixel-classification
