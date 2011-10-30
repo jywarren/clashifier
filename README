@@ -1,4 +1,14 @@
 Depends on:
 
 * RMagick
-* naive_bayes, rmagick gems
+* naive_bayes, rmagick gems, paperclip
+
+To do: 
+
+* Get Classifier controller running
+* Actually install Paperclip and get it accepting image uploads or URL image uploads
+* Get RMagick reading the saved images
+* Figure out how to generate a string representation of a pixel in 3-4 color values which can be used to train a Bayesian model
+* Start accepting a set of pixel color values {:n => 255, :r => 255, :g => 255, :b => 255, :classname => "spartina alterniflora"} to train a model
+* Figure out how to store a Bayesian model in the database -- make a Rails model to store it.
+* Some kind of interface? or keep this as a web service and let clients figure out interface... I'll write one for MapKnitter...
