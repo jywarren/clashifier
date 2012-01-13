@@ -29,14 +29,13 @@ Depends on:
 To do: 
 ########################
 
-* Get Classifier controller running
-	* Start accepting a set of pixel color values {:n => 255, :r => 255, :g => 255, :b => 255, :classname => "spartina alterniflora"} to train a model
-
-Later: 
-
-* Actually install Paperclip and get it accepting image uploads or URL image uploads
-* Get RMagick reading the saved images
-* Some kind of interface? or keep this as a web service and let clients figure out interface... I'll write one for MapKnitter...
+* start with a few sample images and set up Fred to grab pixel colors based on clicks (naming a class in an input field)
+* allow submission of batches of pixels and start collecting sets of pixels based on dragging -- "painting"
+  * try coloring what you've "painted"
+* Set up image uploading with Paperclip
+* histogram an image by classname
+* generate a new image colored by classname, with an HTML key
+* create an image proxy which colors by classname
 
 Later on:
 
