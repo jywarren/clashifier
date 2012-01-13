@@ -9,7 +9,7 @@ class SamplesController < ApplicationController
 	def delete
 		sample = Sample.find params[:id]
 		sample.delete
-		redirect_to "samples/index"
+		redirect_to "samples/index" # rails 3 issue?
 	end
 
 end

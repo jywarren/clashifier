@@ -29,7 +29,7 @@
 <div class="box float">
 <h3>Train Clashifier with a new sample:</h3>
 
-<form method="post" action="/classifier/train_pixel">
+<form action="/classifier/train_pixel">
 	Classname:<br />
 	<input name="classname" id="nearest-classname" type="text" value="dumb" /><br />
 	Author:<br />
@@ -43,7 +43,7 @@
 <div class="box float">
 <h3>Find closest class to your sample:</h3>
 
-<form method="post" action="/classifier/closest">
+<form action="/classifier/classify">
 	Bands: <br />
 	<input name="bands" id="nearest-bands" type="text" style="width:350px" value='{"red":200,"green":5,"blue":8}' /><br />
 	<input type="submit" value="Classify" />

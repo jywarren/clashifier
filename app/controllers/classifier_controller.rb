@@ -10,6 +10,8 @@ class ClassifierController < ApplicationController
 	def train
 
 		#pixels = []
+
+		# do we really need to save the image? can't we examine it in tmp?
 		#@image = Image.new
 		#@image.url = params[:url]
 		#@image.save
@@ -34,18 +36,12 @@ class ClassifierController < ApplicationController
 	end
 
 	def classify
-		# encode RGB or NRGB color data as an n-dimensional vector, transform to string?
-		bands = {:red => params[:r],:green => params[:g],:blue => params[:b]} 
-		respond_to do |format|
-			format.html { render :text => a.classify(*b) } #=> [:spam, 0.03125]
-			format.xml  { render :xml => a.classify(*b) }
-			format.json  { render :json => a.classify(*b) }
-		end
-	end
-
-	def closest
 		@closest = CartesianClassifier.closest(params[:bands])
-		render :text => @closest.inspect, :layout => false
+		respond_to do |format|
+			format.html { render :text => @closest.inspect } #=> [:spam, 0.03125]
+			format.xml  { render :xml => @closest }
+			format.json  { render :json => @closest }
+		end
 	end
 
 end
