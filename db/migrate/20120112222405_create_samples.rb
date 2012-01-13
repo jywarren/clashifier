@@ -1,6 +1,6 @@
-class CreateCartesianSamples < ActiveRecord::Migration
+class CreateSamples < ActiveRecord::Migration
   def self.up
-    create_table :cartesian_samples do |t|
+    create_table :samples do |t|
       t.string :author, :default => 'anonymous', :null => false
       t.string :classname, :default => '', :null => false
       t.string :bandstring, :default => '', :null => false
@@ -9,6 +9,6 @@ class CreateCartesianSamples < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :cartesian_samples
+    drop_table :samples
   end
 end

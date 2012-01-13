@@ -1,13 +1,13 @@
 class CartesianClassifier
 
   # <string> classname, <hash> bands, <string> author
-  # bands = {"bandname1" => value1, "bandname2" => value2}
+  # bands = {"bandname1": value1, "bandname2": value2}
   def self.train(classname,bands,author)
 
     # we're going to have classname collisions, better use authorname too...
     author ||= 'anonymous' # anomymous default
-    bandstring = bands.to_json
-    sample = CartesianSample.new({:classname => classname,:bandstring => bandstring,:author => author})
+    bandstring = bands # must validate this as correctly-formatted JSON...
+    sample = Sample.new({:classname => classname,:bandstring => bandstring,:author => author})
     sample.save
 
   end
@@ -20,7 +20,7 @@ class CartesianClassifier
   # we could create another Model for this and run this only when a class is modified...?
   # I am 100% sure someone can optimize this code:
   def self.classes # alt name "compile_classes"
-    samples = CartesianSample.find(:all)
+    samples = Sample.find(:all)
     samples_by_class = {}
     samples.each do |sample|
       # may need to create hash entry if nonexistent
@@ -46,9 +46,10 @@ class CartesianClassifier
     classes
   end
 
-  # bands is a hash like: 
-  # bands = {"bandname1" => value1, "bandname2" => value2}
+  # bands is a JSON string like: 
+  # bands = {"bandname1": value1, "bandname2": value2}
   def self.closest(bands)
+    bands = ActiveSupport::JSON.decode(bands)
     distances = {}
     self.classes.each do |classname,classbands|
       distances[classname] = self.distance(classbands,bands)
@@ -60,7 +61,7 @@ class CartesianClassifier
   def self.distance(a,b)
     bands = 0
     a.each do |band,value|
-      bands += (value-b[band])**2 unless b[band].nil?
+      bands += (value.to_i-b[band].to_i)**2 unless b[band].nil?
     end
     return bands**0.5
   end

@@ -1,0 +1,18 @@
+html {
+	font-family: georgia, serif;
+}
+
+.box {
+	border: 3px solid #ccc;
+	padding:14px;
+	margin-left:14px;
+	margin-bottom:14px;
+}
+.box input {
+	font-size:1.2em;
+}
+
+.box.float {
+	width:450px;
+	float:left;
+}

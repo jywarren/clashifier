@@ -1,24 +1,41 @@
+##Clashifier##
+
+Clashifier is open source software, and is part of open source research by the Public Laboratory for Open Technology and Science.
+
+To use Clashifier, you can:
+
+* Train it with a "classname" and a set of corresponding color bands (red, green, blue, near-infrared)
+* Find the nearest classname to a set of color bands (and their relative cartesian distance)
+* (soon) point it at the URL of an image to get back an image color-coded by classname
+* (soon) "draw" on an image in-browser with a colored "pen" to classify pixels from that image and train a model
+
+We hope this will be useful for:
+
+* automatically classifying aerial imagery by land use or type
+* detecting and quantifying geographic events like oil spills or chemical seeps
+* identifying different plant species, especially in a monoculture as found in wetlands
+* (maybe?) identifying crop diseases
+
+This project is in early-stage development and we really need all the help we can get! Get in touch on the Public Laboratory mailing list (sign up at publiclaboratory.org/user/register to join) and pitch in!
+
 ########################
 Depends on:
 ########################
 
 * RMagick
-* naive_bayes, rmagick gems, paperclip
+* rmagick gems, paperclip
 
 ########################
 To do: 
 ########################
 
 * Get Classifier controller running
-* Figure out how to generate a string representation of a pixel in 3-4 color values which can be used to train a Bayesian model
 	* Start accepting a set of pixel color values {:n => 255, :r => 255, :g => 255, :b => 255, :classname => "spartina alterniflora"} to train a model
-	* Literature indicates we need to represent pixel as an RGB color vector... can we then convert to a string and train with it?
 
 Later: 
 
 * Actually install Paperclip and get it accepting image uploads or URL image uploads
 * Get RMagick reading the saved images
-* Decide how to store the filename of a saved Bayesian model -- wrap in a Rails model?
 * Some kind of interface? or keep this as a web service and let clients figure out interface... I'll write one for MapKnitter...
 
 Later on:

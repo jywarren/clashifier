@@ -1,0 +1,5 @@
+<ul>
+<% @samples.each do |sample| %>
+	<li><a href="/samples/delete/<%= sample.id %>">Delete</a> | "<%= sample.classname %>": <%= sample.bandstring %> (<%= sample.author %>)</li>
+<% end %>
+</ul>

@@ -1,0 +1,51 @@
+<h1>Clashifier</h1>
+
+<p><a href="http://github.com/jywarren/clashifier">Clashifier</a> is open source software, and is part of open source research by the <a href="http://publiclaboratory.org">Public Laboratory for Open Technology and Science</a>.</p>
+
+<p>To use Clashifier, you can:</p>
+
+<ul>
+	<li>Train it with a "classname" and a set of corresponding color bands (red, green, blue, near-infrared)</li>
+	<li>Find the nearest classname to a set of color bands (and their relative cartesian distance)</li>
+	<li>(soon) point it at the URL of an image to get back an image color-coded by classname</li>
+	<li>(soon) "draw" on an image in-browser with a colored "pen" to classify pixels from that image and train a model</li>
+</ul>
+
+<p>We hope this will be useful for:</p>
+
+<ul>
+	<li>automatically classifying aerial imagery by land use or type</li>
+	<li>detecting and quantifying geographic events like oil spills or chemical seeps</li>
+	<li>identifying different plant species, especially in a monoculture as found in wetlands</li>
+	<li>(maybe?) identifying crop diseases</li>
+</ul>
+
+<p>This project is in early-stage development and we really need all the help we can get! Get in touch on the Public Laboratory mailing list (sign up at <a href="http://publiclaboratory.org/user/register">publiclaboratory.org/user/register</a> to join) and pitch in!</p>
+
+<h2>Playground</h2>
+
+<p><a href="/samples/">See all samples</a></p>
+
+<div class="box float">
+<h3>Train Clashifier with a new sample:</h3>
+
+<form method="post" action="/classifier/train_pixel">
+	Classname:<br />
+	<input name="classname" id="nearest-classname" type="text" value="dumb" /><br />
+	Author:<br />
+	<input name="author" id="nearest-classname" type="text" value="anonymous" /><br />
+	Bands: <br />
+	<input name="bands" id="nearest-bands" type="text" style="width:350px" value='{"red":200,"green":5,"blue":8}' /><br />
+	<input type="submit" value="Train" />
+</form>
+</div>
+
+<div class="box float">
+<h3>Find closest class to your sample:</h3>
+
+<form method="post" action="/classifier/closest">
+	Bands: <br />
+	<input name="bands" id="nearest-bands" type="text" style="width:350px" value='{"red":200,"green":5,"blue":8}' /><br />
+	<input type="submit" value="Classify" />
+</form>
+</div>
