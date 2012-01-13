@@ -26,27 +26,12 @@ class ClassifierController < ApplicationController
 			#classifier = Classifier.find(params[:something])
 			#classifier.train(pixels,params[:classname],params[:model]) # model = the name of the model we're training
 
-		# the following belongs in the Classifier model, unless Tom rejects abstraction...
-		# for now, let's stick with a model-less system where you pass a :model parameter with every request
-	
-		# create a "new term" method or screen for new terms and auto-add:
-		if File.find('classifiers/'+params[:model])
-			a = NaiveBayes.load('classifiers/'+params[:model])
+	end
 
-			# encode RGB or NRGB color data as an n-dimensional vector, transform to string?
-		
-			# this is probably not a good idea:	
-			params[:bands].each do |band|
-				#a.train(params[:class], 'bad', 'word') # multiple terms
-				a.train(params[:class], band, 'red') # how do we name the feature type, r,g, or b?
-			end
-
-			a.save # saves to the specified file; we should wrap in a model, store the paths... 
-			# or use directory listings?
-			render :text => "trained, you happy now?"
-		else
-			render :text => "couldn't find that model"
-		end
+	# for now, let's stick with a model-less system where you pass a :model parameter with every request
+	def train_pixel
+		self.train(params[:classname],params[:bands],params[:author])
+		render :text => "trained, you happy now?"
 	end
 
 	def classify
