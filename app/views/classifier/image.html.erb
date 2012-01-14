@@ -1,32 +1,41 @@
 <html>
 <head>
-	<script src="/javascripts/fred/lib/prototype-1.6.1.js" type="text/javascript"></script>
-	<script src="/javascripts/fred/lib/canvas.js" type="text/javascript"></script>
+	<script src="/javascripts/prototype.js" type="text/javascript"></script>
 	<script src="/javascripts/clashifier.js" type="text/javascript"></script>
 	<meta name="viewport" content="width=device-width; height=device-height; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/image.css">
 </head>
+
 <body onLoad="setup()">
 
 	<script>
 
-function setup() {
+	image = new Image()
+	image_id = <%= 0 %>
+	
+	function setup() {
 
-	Clash.initialize()
-	photo = new Image()
-	photo.src = "/test.jpg"
-	photo.onLoad = function() {
+		Clash.initialize()
+		image.onload = function() {
+			$C.drawImage(image,0,0)//,Clash.width,Clash.height)
+		}
+		image.src = "<%= '/test3.jpg' %>"
+
 	}
-	$C.drawImage(photo,0,0)
-
-}
 
 	</script>
 
 	<div id="header">
-		<h1>Classify based on an image</h1>
-		Click to classify a pixel. 
-		author: <input type="text" id="author" value="anonymous" /> 
-		classname: <input type="text" id="classname" /> 
+		<a href="/">Home</a> | <b>Classify by "coloring" on an image </b> | 
+		Author: <input type="text" id="author" value="anonymous" /> 
+		 | 
+		<span id="palette">
+		<a id="red" href="javascript:void(0);" onDblClick="Clash.select_class('red',true)" onClick="Clash.select_class('red')">click to name</a> 
+		<a id="blue" href="javascript:void(0);" onDblClick="Clash.select_class('blue',true)" onClick="Clash.select_class('blue')">click to name</a> 
+		<a id="yellow" href="javascript:void(0);" onDblClick="Clash.select_class('yellow',true)" onClick="Clash.select_class('yellow')">click to name</a> 
+		<a id="green" href="javascript:void(0);" onDblClick="Clash.select_class('green',true)" onClick="Clash.select_class('green')">click to name</a> 
+		</span>
+
 		<span id="notification"></span>
 	</div>
 

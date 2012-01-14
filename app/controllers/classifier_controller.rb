@@ -34,11 +34,9 @@ class ClassifierController < ApplicationController
 
 	def train
 		pixels = ActiveSupport::JSON.decode(params[:pixels])
-		pixels.each do |pixel|
 			# begin storing image URL and pixel x,y with each sample...
-			CartesianClassifier.train(params[:classname],pixels[1],params[:author])#,pixels[0])
-		end
-		render :text => "trained as '"+params[:classname]+"', you happy now?", :layout => false
+			CartesianClassifier.batch_train(params[:classname],pixels,params[:author],params[:image_id])
+		render :text => "trained, you happy now?", :layout => false
 	end
 
 	# for now, let's stick with a model-less system where you pass a :model parameter with every request
