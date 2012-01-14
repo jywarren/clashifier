@@ -6,8 +6,11 @@ class ClassifierController < ApplicationController
 		
 	end
 
-	# Soon we'll start accepting an image, but for now just a pixel with n color values
-	def train
+	def image
+		render :layout => false
+	end
+
+	def classify_image
 
 		#pixels = []
 
@@ -29,10 +32,22 @@ class ClassifierController < ApplicationController
 
 	end
 
+	def train
+		pixels = ActiveSupport::JSON.decode(params[:pixels])
+		pixels.each do |pixel|
+			# begin storing image URL and pixel x,y with each sample...
+			CartesianClassifier.train(params[:classname],pixels[1],params[:author])#,pixels[0])
+		end
+		render :text => "trained as '"+params[:classname]+"', you happy now?", :layout => false
+	end
+
 	# for now, let's stick with a model-less system where you pass a :model parameter with every request
 	def train_pixel
-		CartesianClassifier.train(params[:classname],params[:bands],params[:author])
-		render :text => "trained, you happy now?", :layout => false
+		if CartesianClassifier.train(params[:classname],params[:bands],params[:author])
+			render :text => "trained as '"+params[:classname]+"', you happy now?", :layout => false
+		else
+			render :text => "failed to train", :layout => false
+		end
 	end
 
 	def classify
