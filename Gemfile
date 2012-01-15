@@ -7,7 +7,7 @@ gem 'rails', '3.0.3'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
-# gem 'rmagick'
+gem 'rmagick'
 # gem "naive_bayes", "~> 0.0.3"
 # gem "paperclip", "~> 2.4"
 # https://github.com/thoughtbot/paperclip

@@ -1,0 +1,24 @@
+body {margin:0}
+#header {
+	padding:10px;
+	height:30px;
+}
+#notification {
+	font-weight:bold;
+	background:#bdf;
+	color:#069;
+}
+#palette a {
+	color:white;
+	padding:3px;
+}
+#palette a:hover {
+	color:#888;
+	padding:3px;
+}
+#palette #red { background:red; }
+#palette #green { background:green; }
+#palette #blue { background:blue; }
+#palette #yellow { background:yellow;color:#000; }
+#palette a#yellow:hover { color:#555; }
+

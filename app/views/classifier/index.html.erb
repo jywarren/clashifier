@@ -5,10 +5,10 @@
 <p>To use Clashifier, you can:</p>
 
 <ul>
-	<li>Train it with a "classname" and a set of corresponding color bands (red, green, blue, near-infrared)</li>
-	<li>Find the nearest classname to a set of color bands (and their relative cartesian distance)</li>
-	<li>(soon) point it at the URL of an image to get back an image color-coded by classname</li>
-	<li>(soon) "draw" on an image in-browser with a colored "pen" to classify pixels from that image and train a model</li>
+	<li>Point it at the URL of an image to get back an image color-coded by classname</li>
+	<li>"Draw" on an image in-browser with a colored "pen" to classify pixels from that image and train a model</li>
+	<li>Train it with a "classname" and a pixel and its set of corresponding color bands (red, green, blue, near-infrared)</li>
+	<li>Find the nearest classname to a pixel of data (and cartesian distance)</li>
 </ul>
 
 <p>We hope this will be useful for:</p>
@@ -24,28 +24,42 @@
 
 <h2>Playground</h2>
 
-<p><a href="/samples/">See all samples</a></p>
-
 <div class="box float">
-<h3>Train Clashifier with a new sample:</h3>
+<h3>Train new samples by "drawing" on an image:</h3>
 
-<form action="/classifier/train_pixel">
-	Classname:<br />
-	<input name="classname" id="nearest-classname" type="text" value="dumb" /><br />
-	Author:<br />
-	<input name="author" id="nearest-classname" type="text" value="anonymous" /><br />
-	Bands: <br />
-	<input name="bands" id="nearest-bands" type="text" style="width:350px" value='{"red":200,"green":5,"blue":8}' /><br />
+<form action="/classifier/image">
+	Image URL:<br />
+	<input type="text" name="url" value="http://farm4.staticflickr.com/3319/4587904129_0bebca032e_m.jpg" />
 	<input type="submit" value="Train" />
 </form>
 </div>
 
 <div class="box float">
-<h3>Find closest class to your sample:</h3>
+<h3>Classify an image with the sample database:</h3>
 
-<form action="/classifier/classify">
-	Bands: <br />
-	<input name="bands" id="nearest-bands" type="text" style="width:350px" value='{"red":200,"green":5,"blue":8}' /><br />
+<form action="/classifier/classify_image">
+	Choose a model with the classnames you want:<br />
+	<select name="classmodel" id="classmodel">
+		<% @classmodels.each do |classmodel| %>
+			<option label="<%= classmodel.classnames %>" value="<%= classmodel.id %>"/>
+		<% end %>
+	</select><br />
+	Image URL: <br />
+	<input name="url" id="url" type="text" style="width:350px" value='http://farm4.staticflickr.com/3319/4587904129_0bebca032e_m.jpg' /><br />
 	<input type="submit" value="Classify" />
+</form>
+</div>
+
+<div class="box float">
+<h3>Generate a model from available samples, by choosing classnames:</h3>
+
+<form action="/classifier/generate_model">
+	Classnames: (comma,delimited)<br />
+	<input type="text" name="classnames" id="gen_classnames" value="river,highway" />
+	Author:<br />
+	<input type="text" name="author" id="gen_author" value="anonymous" />
+	Describe your model:<br />
+	<textarea name="notes"></textarea>
+	<input type="submit" value="Generate" />
 </form>
 </div>

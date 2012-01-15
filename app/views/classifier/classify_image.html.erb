@@ -1,0 +1,16 @@
+Colors: 
+<% @colors.each do |key,value| %>
+	<span style="<%= value[0].to_s %>"><%= key %></span>
+<% end %>
+<br />
+ClassModel ID: <%= @classmodel.id %><br />
+
+<div style="float:left;">
+<h3>Classified image:</h3>
+<img src='data:image/png;base64,<%= @b64 %>' />
+</div>
+
+<div style="float:left;">
+<h3>Original image:</h3>
+<img src='<%= params[:url] %>' />
+</div>
