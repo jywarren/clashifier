@@ -1,14 +1,14 @@
 source 'http://rubygems.org'
 source 'http://gemcutter.org'
 
-gem 'rails', '3.0.7'
+gem 'rails', '3.0.3'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
 # gem 'rmagick'
-gem "naive_bayes", "~> 0.0.3"
+# gem "naive_bayes", "~> 0.0.3"
 # gem "paperclip", "~> 2.4"
 # https://github.com/thoughtbot/paperclip
 
