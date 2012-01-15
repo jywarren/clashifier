@@ -11,7 +11,7 @@
 	<script>
 
 	image = new Image()
-	image_id = <%= 0 %>
+	image_id = <%= 0 %> // later we'll actually store images for reference
 	
 	function setup() {
 
@@ -19,7 +19,7 @@
 		image.onload = function() {
 			$C.drawImage(image,0,0)//,Clash.width,Clash.height)
 		}
-		image.src = "<%= '/test3.jpg' %>"
+		image.src = "<%= params[:url] %>"
 
 	}
 

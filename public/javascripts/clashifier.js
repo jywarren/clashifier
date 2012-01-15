@@ -74,6 +74,7 @@ Clash = {
 		return "{'red':"+b[0]+",'green':"+b[1]+",'blue':"+b[2]+"}"
 	},
 	upload: function(bands) {
+		Clash.notify("saving...")
 		new Ajax.Request("/classifier/train",{
 			method: "post",
 			parameters: { 
@@ -82,9 +83,6 @@ Clash = {
 				image_id: image_id, //hacky but gets the classname from the element
 				pixels: Object.toJSON(Clash.samples)
 			 },
-			onRequest: function(response) {
-				Clash.notify("saving...")
-			}
 			onSuccess: function(response) {
 				Clash.notify(response.responseText,3)
 			}
