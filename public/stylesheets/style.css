@@ -16,3 +16,7 @@ html {
 	width:330px;
 	float:left;
 }
+#palette #red { background:red; }
+#palette #green { background:green; }
+#palette #blue { background:blue; }
+#palette #yellow { background:yellow;color:#000; }

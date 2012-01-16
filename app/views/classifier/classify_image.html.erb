@@ -1,7 +1,9 @@
 Colors: 
+<div id="palette">
 <% @colors.each do |key,value| %>
-	<span style="<%= value[0].to_s %>"><%= key %></span>
+	<span class="<%= value[0].to_s %>"><%= key %>: </span>
 <% end %>
+</div>
 <br />
 ClassModel ID: <%= @classmodel.id %><br />
 
