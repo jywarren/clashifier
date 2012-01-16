@@ -16,7 +16,10 @@ html {
 	width:330px;
 	float:left;
 }
-#palette #red { background:red; }
-#palette #green { background:green; }
-#palette #blue { background:blue; }
-#palette #yellow { background:yellow;color:#000; }
+
+#palette { padding:10px; }
+#palette span { padding:3px;color:white;margin-right:4px; }
+#palette .red { background:red; }
+#palette .green { background:green; }
+#palette .blue { background:blue; }
+#palette .yellow { background:yellow;color:#000; }
