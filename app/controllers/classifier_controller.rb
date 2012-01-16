@@ -10,6 +10,24 @@ class ClassifierController < ApplicationController
 		render :layout => false
 	end
 
+	def proxy
+		if params[:url][-3..-1].downcase == "png" || params[:url][-3..-1].downcase == "jpg"
+		    url = URI.parse(params[:url])
+		    req = Net::HTTP::Get.new(url.path)
+		    res = Net::HTTP.start(url.host, url.port) {|http|
+		      http.request(req)
+		    }
+		    if res.inspect == "#<Net::HTTPMovedPermanently 301 Moved Permanently readbody=true>"
+		      render :text => 'failure'
+		    else
+		      headers['Content-Type'] = 'image/jpeg'
+		      headers['Cache-Control'] = 'public' 
+		      headers['Expires'] = 'Mon, 28 Jul 2020 23:30:00 GMT' 
+		      render :text => res.body
+		    end
+		end
+	end
+
 	def classify
 		@closest = CartesianClassifier.closest(params[:bands])
 		respond_to do |format|

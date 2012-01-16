@@ -19,7 +19,7 @@
 		image.onload = function() {
 			$C.drawImage(image,0,0)//,Clash.width,Clash.height)
 		}
-		image.src = "<%= params[:url] %>"
+		image.src = "/classifier/proxy?url=<%= params[:url] %>"
 
 	}
 
