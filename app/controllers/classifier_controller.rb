@@ -115,7 +115,7 @@ class ClassifierController < ApplicationController
 	def train
 		pixels = ActiveSupport::JSON.decode(params[:pixels])
 			# begin storing image URL and pixel x,y with each sample...
-			CartesianClassifier.batch_train(params[:classname],pixels,params[:author],params[:image_id])
+			CartesianClassifier.batch_train(params[:classname],pixels,params[:author],params[:image_url])
 		render :text => "trained, you happy now?", :layout => false
 	end
 

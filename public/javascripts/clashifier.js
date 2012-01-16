@@ -80,7 +80,7 @@ Clash = {
 			parameters: { 
 				author: $('author').value,
 				classname: $(Clash.color).innerHTML, //hacky but gets the classname from the element
-				image_id: image_id, //hacky but gets the classname from the element
+				image_url: image_url, //hacky but gets the classname from the element
 				pixels: Object.toJSON(Clash.samples)
 			 },
 			onSuccess: function(response) {

@@ -12,10 +12,10 @@ class CartesianClassifier
   end
 
   # the # of inserts necessitates some caveman tactics... 
-  def self.batch_train(classname,pixels,author,image_id)
+  def self.batch_train(classname,pixels,author,image_url)
     Sample.transaction do
       pixels.each do |pixel|
-        Sample.connection.execute "INSERT INTO samples (`classname`,`bandstring`,`author`,`image_id`,`xy`) values (\"#{classname}\",\"#{pixel[1]}\",\"#{author}\",#{image_id},\"#{pixel[0]}\")"
+        Sample.connection.execute "INSERT INTO samples (`classname`,`bandstring`,`author`,`image_url`,`xy`) values (\"#{classname}\",\"#{pixel[1]}\",\"#{author}\",\"#{image_url}\",\"#{pixel[0]}\")"
       end
     end
   end

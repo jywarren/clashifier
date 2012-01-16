@@ -41,7 +41,7 @@
 	Choose a model with the classnames you want:<br />
 	<select name="classmodel" id="classmodel">
 		<% @classmodels.each do |classmodel| %>
-			<option label="<%= classmodel.classnames %>" value="<%= classmodel.id %>"/>
+			<option value="<%= classmodel.id %>"><%= classmodel.classnames %></option>
 		<% end %>
 	</select><br />
 	Image URL: <br />
