@@ -9,10 +9,8 @@
 <body onLoad="setup()">
 
 	<script>
-
 	image = new Image()
 	image_url = "<%= params[:url] %>" // later we'll actually store images for reference
-	
 	function setup() {
 
 		Clash.initialize()
@@ -22,7 +20,6 @@
 		image.src = "/classifier/proxy?url=<%= params[:url] %>"
 
 	}
-
 	</script>
 
 	<div id="header">
