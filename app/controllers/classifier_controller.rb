@@ -1,4 +1,5 @@
 #require "lib/cartesianclassifier.rb"
+require 'net/http'
 
 class ClassifierController < ApplicationController
 
