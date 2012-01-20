@@ -1,65 +1,54 @@
+<div class='limiter'>
 <h1>Clashifier</h1>
-
 <p><a href="http://github.com/jywarren/clashifier">Clashifier</a> is open source software, and is part of open source research by the <a href="http://publiclaboratory.org">Public Laboratory for Open Technology and Science</a>.</p>
-
 <p>To use Clashifier, you can:</p>
-
 <ul>
 	<li>Point it at the URL of an image to get back an image color-coded by classname</li>
 	<li>"Draw" on an image in-browser with a colored "pen" to classify pixels from that image and train a model</li>
 	<li>Train it with a "classname" and a pixel and its set of corresponding color bands (red, green, blue, near-infrared)</li>
 	<li>Find the nearest classname to a pixel of data (and cartesian distance)</li>
 </ul>
-
 <p>We hope this will be useful for:</p>
-
 <ul>
 	<li>automatically classifying aerial imagery by land use or type</li>
 	<li>detecting and quantifying geographic events like oil spills or chemical seeps</li>
 	<li>identifying different plant species, especially in a monoculture as found in wetlands</li>
 	<li>(maybe?) identifying crop diseases</li>
 </ul>
-
 <p>This project is in early-stage development and we really need all the help we can get! Get in touch on the Public Laboratory mailing list (sign up at <a href="http://publiclaboratory.org/user/register">publiclaboratory.org/user/register</a> to join) and pitch in!</p>
-
 <h2>Playground</h2>
-
 <div class="box float">
-<h3>Train new samples by "drawing" on an image:</h3>
-
-<form action="/classifier/image">
-	Image URL:<br />
-	<input type="text" name="url" value="http://farm4.staticflickr.com/3367/4595699603_5def689ea5_z.jpg" />
-	<input type="submit" value="Train" />
-</form>
+    <h3>Train new samples by "drawing" on an image:</h3>
+    <form action="/classifier/image">
+        Image URL:<br />
+        <input type="text" name="url" value="http://farm4.staticflickr.com/3367/4595699603_5def689ea5_z.jpg" />
+        <input type="submit" value="Train" />
+    </form>
 </div>
-
 <div class="box float">
-<h3>Classify an image with the sample database:</h3>
-
-<form action="/classifier/classify_image">
-	Choose a model with the classnames you want:<br />
-	<select name="classmodel" id="classmodel">
-		<% @classmodels.each do |classmodel| %>
-			<option value="<%= classmodel.id %>"><%= classmodel.classnames %></option>
-		<% end %>
-	</select><br />
-	Image URL: <br />
-	<input name="url" id="url" type="text" style="width:350px" value='http://farm4.staticflickr.com/3367/4595699603_5def689ea5_z.jpg' /><br />
-	<input type="submit" value="Classify" />
-</form>
+    <h3>Classify an image with the sample database:</h3>
+    <form action="/classifier/classify_image">
+        Choose a model with the classnames you want:<br />
+        <select name="classmodel" id="classmodel">
+            <% @classmodels.each do |classmodel| %>
+                <option value="<%= classmodel.id %>"><%= classmodel.classnames %></option>
+            <% end %>
+        </select><br />
+        Image URL: <br />
+        <input name="url" id="url" type="text" style="width:350px" value='http://farm4.staticflickr.com/3367/4595699603_5def689ea5_z.jpg' /><br />
+        <input type="submit" value="Classify" />
+    </form>
 </div>
-
 <div class="box float">
-<h3>Generate a model from available samples, by choosing classnames:</h3>
-
-<form action="/classifier/generate_model">
-	Classnames: (comma,delimited)<br />
-	<input type="text" name="classnames" id="gen_classnames" value="river,highway" />
-	Author:<br />
-	<input type="text" name="author" id="gen_author" value="anonymous" />
-	Describe your model:<br />
-	<textarea name="notes"></textarea>
-	<input type="submit" value="Generate" />
-</form>
+    <h3>Generate a model from available samples, by choosing classnames:</h3>
+    <form class='vertical' action="/classifier/generate_model">
+        <label for='classnames'>Classnames: (comma,delimited)</label>
+        <input type="text" name="classnames" id="gen_classnames" value="river,highway" />
+        <label for='author'>Author:</label>
+        <input type="text" name="author" id="gen_author" value="anonymous" />
+        <label for='notes'>Describe your model:</label>
+        <textarea name="notes"></textarea>
+        <input type="submit" value="Generate" />
+    </form>
+</div>
 </div>

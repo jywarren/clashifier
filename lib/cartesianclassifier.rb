@@ -61,6 +61,7 @@ class CartesianClassifier
     classes.each do |classname,classbands|
       distances[classname] = self.distance(classbands,bands)
     end
+    raise "Incomplete classification: no useful bands found." if distances.length.zero?
     distances = distances.sort_by {|classname,value| value}
     distances.first.first
   end

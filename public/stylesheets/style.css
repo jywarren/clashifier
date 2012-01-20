@@ -1,5 +1,25 @@
 html {
-	font-family: georgia, serif;
+	font: 15px/20px "Georgia", serif;
+}
+
+a {
+  color:#0000ee;
+}
+a:hover {
+  background:#FFFFAC;
+}
+
+h1 {
+  font:normal 30px/40px "Georgia";
+}
+
+h2 {
+  font:normal 25px/40px "Georgia";
+}
+
+p {
+	font: 15px/20px "Georgia", serif;
+  margin:10px 0;
 }
 
 .box {
@@ -8,6 +28,19 @@ html {
 	margin-left:14px;
 	margin-bottom:14px;
 }
+
+.limiter {
+  padding:20px;
+}
+
+ul {
+  margin-left:25px;
+}
+
+form.vertical label {
+  display:block;
+}
+
 .box input {
 	font-size:1.2em;
 }
