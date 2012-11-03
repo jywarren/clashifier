@@ -85,6 +85,11 @@ class ClassifierController < ApplicationController
 
 	puts "parsing pixels and writing new pixels"
 
+		@percentages = {}
+		classes.each do |classname,classbands|
+			@percentages[classname] = 0
+		end
+
 		# this can also surely be more efficient, look at: http://www.simplesystems.org/RMagick/doc/image2.html#import_pixels
 		(0..image.columns-1).each do |x|
 			(0..image.rows-1).each do |y|
@@ -95,11 +100,17 @@ class ClassifierController < ApplicationController
 					#puts pixel_string
 				closest = CartesianClassifier.closest_hash(pixel_string,classes)
 					#puts closest
+				@percentages[closest] += 1
 				# match the resulting class to a color and write to a pixel
 				a = colorcodes[@colors[closest][0]].map { |c| c*255 } #MaxRGB is 255^2
 				image.import_pixels(x, y, 1, 1, "RGB", a);
 			end
 		end
+
+		@percentages.each do |key,value|
+			@percentages[key] = (100*((1.00 * value) / (image.rows*image.columns))).to_i
+		end
+
 		respond_to do |format|
 			format.html { 
 				@b64 = Base64.encode64(image.to_blob)

@@ -1,7 +1,7 @@
 Colors: 
 <div id="palette">
 <% @colors.each do |key,value| %>
-	<span class="<%= value[0].to_s %>"><%= key %>: </span>
+	<span class="<%= value[0].to_s %>"><%= key %>: <%= @percentages[key] %>%</span>
 <% end %>
 </div>
 <br />
